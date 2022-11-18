@@ -1,42 +1,43 @@
 import React from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
+
+import styles from './Home.module.scss';
 
 import JobBlock from '../../components/JobBlock/JobBlock';
-import JobDetails from '../JobDetails/JobDetails';
+import Pagination from '../../components/Pagination/Pagination';
 
 const Home = () => {
   const [items, setItems] = React.useState([]);
-  const [activeJob, setActiveJob] = React.useState(0);
-
-  console.log(items);
-  const activeJobCallback = (payload) => {
-    setActiveJob(payload);
-  };
-
-  const returnCallback = (payload) => {
-    setActiveJob(payload);
-  };
+  const [currentPage, setCurrentPage] = React.useState(1);
 
   const fetchJobs = async () => {
-    await axios.get(`https://63038e9a0de3cd918b38f666.mockapi.io/Jobs`).then((res) => {
-      setItems(res.data);
-    });
+    await axios
+      .get(
+        `https://63038e9a0de3cd918b38f666.mockapi.io/Jobs?sortBy=registered&order=desc&page=${currentPage}&limit=15`,
+      )
+      .then((res) => {
+        setItems(res.data);
+      });
   };
 
   React.useEffect(() => {
     window.scrollTo(0, 0);
     fetchJobs();
-  }, [activeJob]);
-
-  console.log(activeJob);
+  }, [currentPage]);
 
   const jobs = items.map((obj) => (
-    <JobBlock key={obj._id} activeJobCallback={activeJobCallback} {...obj} />
+    <Link to={`/_id=${obj._id}`} key={obj._id}>
+      <JobBlock {...obj} />{' '}
+    </Link>
   ));
 
   return (
-    <div>
-      {activeJob === 0 ? jobs : <JobDetails returnCallback={returnCallback} {...activeJob} />}
+    <div className={styles.root}>
+      <div className={styles.jobs_list}>{jobs}</div>
+      <div className={styles.pagination}>
+        <Pagination onChangePage={(number) => setCurrentPage(number)} />
+      </div>
     </div>
   );
 };
