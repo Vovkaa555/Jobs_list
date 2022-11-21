@@ -69,7 +69,7 @@ const JobDetails = () => {
                 </div>
                 <div className={styles.main_info}>
                   <p>{job.description}</p>
-                  <span>Responsopilities:</span>
+                  <span>Responsibilities:</span>
                   <p>{job.about}</p>
                   <span>Compensation & Benefits:</span>
                   <p>Our physicians enjoy a wide range of benefits, including:</p>
@@ -84,29 +84,36 @@ const JobDetails = () => {
                     ))}
                   </div>
                   <button>apply now</button>
-                  <div className={styles.additional}>Additional info</div>
-                  <div>Employment type</div>
-                  <div className={styles.employment_block}>
-                    {job.employment.map((obj, index) => (
-                      <div className={styles.employment} key={index}>
-                        {obj}
+                  <div className={styles.additional_elements}>
+                    <div className={styles.additional_info}>
+                      <div className={styles.additional}>Additional info</div>
+                      <div>Employment type</div>
+                      <div className={styles.employment_block}>
+                        {job.employment.map((obj, index) => (
+                          <div className={styles.employment} key={index}>
+                            {obj}
+                          </div>
+                        ))}
                       </div>
-                    ))}
-                  </div>
-                  <div>Benefits</div>
-                  <div className={styles.benefits_block}>
-                    {job.benefits.map((obj, index) => (
-                      <div className={styles.benefits} key={index}>
-                        {obj}
+                      <div>Benefits</div>
+                      <div className={styles.benefits_block}>
+                        {job.benefits.map((obj, index) => (
+                          <div className={styles.benefits} key={index}>
+                            {obj}
+                          </div>
+                        ))}
                       </div>
-                    ))}
+                    </div>
+                    <div clsssName={styles.attached_block}>
+                      <div className={styles.attached_images}>Attached images</div>
+                      <div className={styles.images_block}>
+                        {job.images.map((obj, index) => (
+                          <img className={styles.image} alt="" src={obj} key={index}></img>
+                        ))}
+                      </div>
+                    </div>
                   </div>
-                  <div className={styles.attached_images}>Attached images</div>
-                  <div className={styles.images_block}>
-                    {job.images.map((obj, index) => (
-                      <img className={styles.image} alt="" src={obj} key={index}></img>
-                    ))}
-                  </div>
+                  <div className={styles.contacts_info}>Contacts</div>
                 </div>
               </div>
             </div>

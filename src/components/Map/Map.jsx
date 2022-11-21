@@ -21,7 +21,15 @@ export default function Map({ ...activeJob }) {
   );
 
   return (
-    <div style={{ height: '218px', width: '402px', padding: '0' }}>
+    <div
+      className="map"
+      style={{
+        position: 'absolute',
+        right: '0',
+        height: '218px',
+        width: '410px',
+        padding: '0',
+      }}>
       <GoogleMapReact
         bootstrapURLKeys={{ key: '' }}
         defaultCenter={defaultProps.center}

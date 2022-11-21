@@ -41,12 +41,17 @@ h1{
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 32px;
     width: 1400px;
     height: 164px;
     background: #FFFFFF;
     box-shadow: 2px 1px 7px rgba(0, 0, 0, 0.08), 0px 2px 1px -1px rgba(0, 0, 0, 0.04), 0px 1px 3px rgba(0, 0, 0, 0.12);
     border-radius: 8px;
+    @media only screen and (max-width: 1420px) {
+        width: 396px;
+        height: 206px;
+        background: #EFF0F5;
+        position: relative;
+    }
 
     :hover {
         cursor: pointer;
@@ -55,17 +60,24 @@ h1{
     .content {
         display: flex;
         flex-direction: row;
+        justify-content: space-between;
         align-items: center;
         padding: 24px 16px;
-        gap: 26px;
         height: 116px;
         flex: none;
         order: 1;
         flex-grow: 1;
+        @media only screen and (max-width: 1420px) {
+            padding-left: 16px;
+            padding-top: 45px;
+        }
 
         .description {
             display: flex;
             width: 1070px;
+            @media only screen and (max-width: 1420px) {
+                width: 363px;
+            }
 
             .image {
                 width: 85px;
@@ -74,6 +86,10 @@ h1{
                 order: 0;
                 flex-grow: 0;
                 border-radius: 50%;
+                @media only screen and (max-width: 1420px) {
+                    width: 66px;
+                    height: 66px;
+                }
             }
             
             .information {
@@ -88,6 +104,12 @@ h1{
                 flex: none;
                 order: 1;
                 flex-grow: 1;
+                @media only screen and (max-width: 1420px) {
+                    width: 278px;
+                    height: 135px;
+                    padding-left: 18px;
+                    gap: 0px;
+                }
                 .job_description {
                     width: 712px;
                     height: 50px;
@@ -101,6 +123,14 @@ h1{
                     flex: none;
                     order: 1;
                     flex-grow: 0;
+                    @media only screen and (max-width: 1420px) {
+                        width: 278px;
+                        height: 48px;
+                        font-weight: 400;
+                        font-size: 18px;
+                        color: #3A4562;
+                        overflow: hidden;
+                    }
                 }
                 .department {
                     height: 25px;
@@ -114,7 +144,14 @@ h1{
                     flex: none;
                     order: 2;
                     align-self: stretch;
-                    flex-grow: 0;   
+                    flex-grow: 0;  
+                    @media only screen and (max-width: 1420px) {
+                        margin-top: 5px;
+                        margin-bottom: 7px;
+                        width: 279px;
+                        height: 50px;
+                        overflow: hidden;
+                    } 
                 }
                 .location {
                     font-family: 'proxima_nova_rgregular';
@@ -139,6 +176,14 @@ h1{
             span {
                 color: #38415D;
             }
+            @media only screen and (max-width: 1420px) {
+                position: absolute;
+                top: 17px;
+                left: 101px;
+                font-size: 10px;
+                width: 54px;
+                height: 10px;
+            }
         }
         .share{
             display: flex;
@@ -151,6 +196,10 @@ h1{
             order: 3;
             align-self: stretch;
             flex-grow: 0;
+            @media only screen and (max-width: 1420px) {
+                width: 1px;
+            }
+            
             .share_icon {
                 width: 32px;
                 height: 32px;
@@ -160,6 +209,9 @@ h1{
                 flex-grow: 0;
                 color: #878D9D;
                 font-size: 20px;
+                @media only screen and (max-width: 1420px) {
+                    display: none;
+                }
             }
             .date {
                 height: 67px;
@@ -176,6 +228,13 @@ h1{
                 flex: none;
                 order: 1;
                 flex-grow: 1;
+                @media only screen and (max-width: 1420px) {
+                    display: block;
+                    position: absolute;
+                    top: 9px;
+                    right: 16px;
+                    font-size: 14px;
+                }
             }
         }
     }

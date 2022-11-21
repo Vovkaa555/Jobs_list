@@ -43,6 +43,11 @@ h1{
     box-shadow: 2px 1px 7px rgba(0, 0, 0, 0.08), 0px 2px 1px -1px rgba(0, 0, 0, 0.04), 0px 1px 3px rgba(0, 0, 0, 0.12);
     border-radius: 10.4px;
 	position: absolute;
+	@media only screen and (max-width: 1420px) {
+		width: 396px;
+		height: 40px;
+		background: #F9FAFD;
+	}
     
 	.pagination{
 		position: relative;
@@ -59,11 +64,24 @@ h1{
 		line-height: 35px;
     	letter-spacing: 1.73333px;
     	color: #70778B;
+		@media only screen and (max-width: 1420px) {
+			font-size: 16px;
+			justify-content: center;
+			line-height: 33px;
+			color: rgba(56, 65, 93, 0.602109);
+		}
 		
 		.active {
 			border-bottom: 2.6px solid #5876C5;
 			color: #5876C5;
 			padding-bottom: 5px;
+			@media only screen and (max-width: 1420px) {
+				color: #55699E;
+				border-bottom: 2px solid #55699E;
+				padding-bottom: 0px;
+				
+			}
+
 		}
 		.page_previous {
 			display: flex;
@@ -75,6 +93,14 @@ h1{
 			&:hover {
 				cursor: pointer;
 				color: #5876C5;
+			}
+			@media only screen and (max-width: 1420px) {
+				margin-right: 100px;
+				margin-top: 3px;
+				height: 24px;
+				line-height: 25px;
+				color: #FFFFFF;
+				border-right: 1px solid rgba(56, 65, 93, 0.0513276);
 			}
 		}
 		.page_next {
@@ -88,6 +114,14 @@ h1{
 				cursor: pointer;
 				color: #5876C5;
 			}
+			@media only screen and (max-width: 1420px) {
+				margin-left: 100px;
+				margin-top: 3px;
+				height: 24px;
+				line-height: 25px;
+				color: #FFFFFF;
+				border-left: 1px solid rgba(56, 65, 93, 0.0513276);
+			}
 		}
 		.page {
 			display: flex;
@@ -99,11 +133,16 @@ h1{
 				padding-bottom: 5px;
 				cursor: pointer;
 			}
+			@media only screen and (max-width: 1420px) {
+				width: 28px;
+				&:hover {
+					border-bottom: 2px solid #55699E;
+					color: #55699E;
+					padding-bottom: 0px;
+					cursor: pointer;
+				}
+			}
 		}
 		
 	}
-    
-
-
-
 }
