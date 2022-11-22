@@ -43,7 +43,7 @@ h1{
     background-color:  #FFFFFF;
     @media only screen and (max-width: 1420px)  {
         justify-content: flex-start;
-        flex-wrap: wrap;
+        flex-direction: column;
     }
     
     a {
@@ -62,9 +62,11 @@ h1{
             display: flex;
             flex-direction: column;
             width: 774px;  
+            
             @media only screen and (max-width: 1420px)  {
                 width: 384px;
                 position: relative;
+                
             }  
                 
             

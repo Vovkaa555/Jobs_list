@@ -3,6 +3,11 @@ import GoogleMapReact from 'google-map-react';
 import styles from './Map.module.scss';
 import { ImLocation } from 'react-icons/im';
 
+type MapsProp = {
+  lat: number;
+  lng: number;
+}
+
 export default function Map({ ...activeJob }) {
   const defaultProps = {
     center: {
@@ -12,7 +17,7 @@ export default function Map({ ...activeJob }) {
     zoom: 15,
   };
 
-  const AnyReactComponent = ({ text }) => (
+  const AnyReactComponent: React.FC<MapsProp> = () => (
     <div className={styles.root}>
       <span>
         <ImLocation />

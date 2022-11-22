@@ -5,10 +5,20 @@ import styles from './JobBlock.module.scss';
 import { ImLocation, ImStarFull } from 'react-icons/im';
 import { BsBookmark } from 'react-icons/bs';
 
-const JobBlock = ({ ...obj }) => {
+type JobTypesProp = {
+  registered: string,
+  rating: any,
+  index: number,
+  picture: string,
+  job: string,
+  department: string,
+  location: string,
+};
+
+const JobBlock: React.FC<JobTypesProp> = ({ ...obj }) => {
   const timeago = moment(obj.registered).fromNow();
 
-  const rating = obj.rating.map((obj, index) => (
+  const rating = obj.rating.map((obj:JobTypesProp , index:number) => (
     <span key={index}>
       <ImStarFull />
     </span>

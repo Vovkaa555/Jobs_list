@@ -8,9 +8,31 @@ import axios from 'axios';
 import styles from './JobDetails.module.scss';
 import Map from '../../components/Map/Map';
 
-const JobDetails = () => {
+type JobDetailsProp = {
+  _id?: string,
+  registered?: string,
+  job?: string,
+  rating?: any,
+  index?: number,
+  picture?: string,
+  department?: string,
+  location?: string,
+  balance?: string,
+  description?: string,
+  about?: string,
+  compensation?: string[],
+  employment?: string[],
+  benefits?: string[],
+  images?: string[],
+  department_name?: string,
+  address?: string,
+  phone?: string,
+  email?: string
+};
+
+const JobDetails: React.FC<JobDetailsProp> = () => {
   const { _id } = useParams();
-  const [job, setJob] = React.useState();
+  const [job, setJob] = React.useState<JobDetailsProp>();
   const [isLoading, setLoading] = React.useState(true);
 
   React.useEffect(() => {
@@ -28,12 +50,37 @@ const JobDetails = () => {
     fetch();
   }, []);
 
+  const compensation = (job?.compensation !== undefined ? (job.compensation.map((obj, index:number) => (
+    <div key={index} className={styles.compensation_block}>
+      <span>
+        <AiTwotoneMinusSquare />
+      </span>
+      <div>{obj}</div>
+    </div>
+  ))) : '')
+
+  const employment = ( job?.employment !== undefined ? (job.employment.map((obj, index) => (
+    <div className={styles.employment} key={index}>
+      {obj}
+    </div>
+  ))) : '')
+
+  const benefits = ( job?.benefits !== undefined ? (job?.benefits.map((obj, index) => (
+    <div className={styles.benefits} key={index}>
+      {obj}
+    </div>
+  ))) : '')
+
+  const images = (job?.images !== undefined ? (job?.images.map((obj, index:number) => (
+    <img className={styles.image} alt="" src={obj} key={index}></img>
+  ))) : '')
+
   return (
     <div className={styles.root}>
       {isLoading ? (
         <div>Loading...</div>
       ) : (
-        <>
+      <>
           <div>
             <div className={styles.job}>
               <div className={styles.job_details}>
@@ -57,31 +104,24 @@ const JobDetails = () => {
                 <button>apply now</button>
                 <div className={styles.job_description}>
                   <div className={styles.job_header}>
-                    <div className={styles.job_name}>{job.job}</div>
+                    <div className={styles.job_name}>{job?.job}</div>
                     <div className={styles.salary_block}>
-                      <div className={styles.salary}>{job.balance}</div>
+                      <div className={styles.salary}>{job?.balance}</div>
                       <span>Brutto, per year</span>
                     </div>
                   </div>
                 </div>
                 <div className={styles.registered}>
-                  <span>Posted {moment(job.registered).fromNow()}</span>
+                  <span>Posted {moment(job?.registered).fromNow()}</span>
                 </div>
                 <div className={styles.main_info}>
-                  <p>{job.description}</p>
+                  <p>{job?.description}</p>
                   <span>Responsibilities:</span>
-                  <p>{job.about}</p>
+                  <p>{job?.about}</p>
                   <span>Compensation & Benefits:</span>
                   <p>Our physicians enjoy a wide range of benefits, including:</p>
                   <div>
-                    {job.compensation.map((obj, index) => (
-                      <div key={index} className={styles.compensation_block}>
-                        <span>
-                          <AiTwotoneMinusSquare />
-                        </span>
-                        <div>{obj}</div>
-                      </div>
-                    ))}
+                    {compensation}
                   </div>
                   <button>apply now</button>
                   <div className={styles.additional_elements}>
@@ -89,27 +129,17 @@ const JobDetails = () => {
                       <div className={styles.additional}>Additional info</div>
                       <div>Employment type</div>
                       <div className={styles.employment_block}>
-                        {job.employment.map((obj, index) => (
-                          <div className={styles.employment} key={index}>
-                            {obj}
-                          </div>
-                        ))}
+                        {employment}
                       </div>
                       <div>Benefits</div>
                       <div className={styles.benefits_block}>
-                        {job.benefits.map((obj, index) => (
-                          <div className={styles.benefits} key={index}>
-                            {obj}
-                          </div>
-                        ))}
+                        {benefits}
                       </div>
                     </div>
-                    <div clsssName={styles.attached_block}>
+                    <div className={styles.attached_block}>
                       <div className={styles.attached_images}>Attached images</div>
                       <div className={styles.images_block}>
-                        {job.images.map((obj, index) => (
-                          <img className={styles.image} alt="" src={obj} key={index}></img>
-                        ))}
+                        {images}
                       </div>
                     </div>
                   </div>
@@ -132,7 +162,7 @@ const JobDetails = () => {
               <div className={styles.company_info}>
                 <div className={styles.department_info}>
                   <span>Department name.</span>
-                  <span>{job.department_name}</span>
+                  <span>{job?.department_name}</span>
                 </div>
                 <div className={styles.contacts}>
                   <div className={styles.address}>
@@ -140,17 +170,17 @@ const JobDetails = () => {
                       <span className={styles.location_icon}>
                         <MdLocationOn />
                       </span>
-                      {job.address}
+                      {job?.address}
                     </div>
                   </div>
-                  <span>{job.phone}</span>
-                  <span>{job.email}</span>
+                  <span>{job?.phone}</span>
+                  <span>{job?.email}</span>
                 </div>
               </div>
             </div>
             <Map {...job} />
           </div>
-        </>
+          </>
       )}
     </div>
   );
